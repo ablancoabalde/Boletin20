@@ -15,7 +15,7 @@ public class Fichero {
 
     PrintWriter escribir;
 
-    FileWriter fw;
+    static FileWriter fw;
     static Libros lb;
     
    static  ArrayList<Libros> lLibros=new ArrayList();
@@ -61,13 +61,13 @@ public class Fichero {
         }
     }
 
-    public void engadirFichero(Libros lb) {
-        try {
-            fw=new FileWriter(new File("src/fichero/flibros.txt"), true);
-            fw.write(lb.toString());
-            fw.close();
-        } catch (IOException ex) {
-            System.out.println("Error 4");
-        }
-    }
+//    public static void engadirFichero(Libros lb) {
+//        try {
+//            fw=new FileWriter(new File("src/fichero/flibros.txt"), true);
+//            fw.write(lb.toString());
+//            fw.close();
+//        } catch (IOException ex) {
+//            System.out.println("Error 4");
+//        }
+//    }
 }
