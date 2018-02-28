@@ -19,7 +19,7 @@ public class Fichero {
 
     Libros lb;
 
-    private ArrayList<Libros> lLibros = new ArrayList();
+    private ArrayList<Libros> lLibros=new ArrayList();
 
     public void leerFichero() {
         String cargaDatos;
@@ -30,20 +30,19 @@ public class Fichero {
             // Usar el delimitador que queramos
 
             // WIndows
-            Scanner sc = new Scanner(new File("D:\\NeatBeansProjects\\Boletin20\\src\\fichero\\flibros.txt"));
-
+            //      Scanner sc = new Scanner(new File("D:\\NeatBeansProjects\\Boletin20\\src\\fichero\\flibros.txt"));
             // Linux
-            //Scanner sc=new Scanner(new File("src/fichero/flibros.txt"));
+            Scanner sc=new Scanner(new File("src/fichero/flibros.txt"));
             while (sc.hasNextLine()) {
-                cargaDatos = sc.nextLine();
-                lista = cargaDatos.split("\\s*, \\s*");
-                lb = new Libros(lista[0], lista[1], Float.valueOf(lista[2]), Integer.valueOf(lista[3]));
+                cargaDatos=sc.nextLine();
+                lista=cargaDatos.split("\\s*, \\s*");
+                lb=new Libros(lista[0], lista[1], Float.valueOf(lista[2]), Integer.valueOf(lista[3]));
                 lLibros.add(lb);
             }
 
             sc.close();
         } catch (FileNotFoundException ex) {
-            System.out.println("Erro2" + ex.getMessage());
+            System.out.println("Erro2"+ex.getMessage());
         }
         //  return lLibros;
     }
@@ -55,15 +54,15 @@ public class Fichero {
     public void escribirFichero(ArrayList<Libros> listaNueva) {
         try {
             //Windows
-            fich = new File("D:\\NeatBeansProjects\\Boletin20\\src\\fichero\\flibros.txt");
+            //           fich = new File("D:\\NeatBeansProjects\\Boletin20\\src\\fichero\\flibros.txt");
             //Linux
-//            fich = new File("src/fichero/flibros.txt");
+            fich=new File("src/fichero/flibros.txt");
             // escribir=new PrintWriter(fich)
-            escribir = new PrintWriter(new FileWriter(fich));// Abrir Fichero y añadir sin sobreescribir
-        Iterator it = listaNueva.iterator();
-        while (it.hasNext()) {
-            escribir.write(it.next().toString()+"\n");
-        }
+            escribir=new PrintWriter(new FileWriter(fich));// Abrir Fichero y añadir sin sobreescribir
+            Iterator it=listaNueva.iterator();
+            while (it.hasNext()) {
+                escribir.write(it.next().toString()+"\n");
+            }
             escribir.close();
 
         } catch (FileNotFoundException ex) {
@@ -73,13 +72,31 @@ public class Fichero {
         }
     }
 
-//    public static void engadirFichero(Libros lb) {
-//        try {
-//            fw=new FileWriter(new File("src/fichero/flibros.txt"), true);
-//            fw.write(lb.toString());
-//            fw.close();
-//        } catch (IOException ex) {
-//            System.out.println("Error 4");
-//        }
-//    }
+    public void buscarFichero(String autor) {
+        String cargaDatos;
+        String[] lista;
+
+        // A prueba de errores de carga de datos desde un Fichero ("\\s*,\\s*") para que lea espacios
+        try {
+            // Usar el delimitador que queramos
+
+            // WIndows
+            //      Scanner sc = new Scanner(new File("D:\\NeatBeansProjects\\Boletin20\\src\\fichero\\flibros.txt"));
+            // Linux
+            Scanner sc=new Scanner(new File("src/fichero/flibros.txt"));
+            while (sc.hasNextLine()) {
+                cargaDatos=sc.nextLine();
+                lista=cargaDatos.split("\\s*, \\s*");
+                if (autor.equalsIgnoreCase(lista[1])) {
+                    System.out.println("Título de los libros del autor: "+lista[0]);
+                }
+
+            }
+
+            sc.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("Erro2"+ex.getMessage());
+        }
+        //  return lLibros;
+    }
 }

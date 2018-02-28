@@ -7,11 +7,12 @@ public class Boletin20 {
 
     public static void main(String[] args) {
 
-        Metodos obx = new Metodos();
+        Metodos obx=new Metodos();
+        Fichero fich = new Fichero();
         obx.cargar();
-        boolean exit = true;
+        boolean exit=true;
 
-        int opcion = 7;
+        int opcion=8;
 
         // Bucle para trabajar con la app
         do {
@@ -19,14 +20,15 @@ public class Boletin20 {
             Try para que no deje de funcionar cuando pulse cancelar en el JOptionPane y cierre la app
              */
             try {
-                opcion = Integer.parseInt(JOptionPane.showInputDialog(null, "Opciones:\n "
-                        + "1) Engadir libros\n "
-                        + "2) Consulta libro\n"
-                        + "3) Amosar os libros\n"
-                        + "4) Dar de baixa libros\n"
-                        + "5) modificar precio libro\n"
-                        + "6) escribir fichero\n"
-                        + "7) Salir"));
+                opcion=Integer.parseInt(JOptionPane.showInputDialog(null, "Opciones:\n "
+                        +"1) Engadir libros\n "
+                        +"2) Consulta libro\n"
+                        +"3) Amosar os libros\n"
+                        +"4) Dar de baixa libros\n"
+                        +"5) modificar precio libro\n"
+                        +"6) escribir fichero\n"
+                        +"7) Buscar por autor\n"
+                        +"8) Salir"));
 
                 switch (opcion) {
                     case 1:
@@ -56,16 +58,20 @@ public class Boletin20 {
 
                         break;
                     case 7:
+                        fich.buscarFichero(JOptionPane.showInputDialog("Introduzca Autor"));
 
-                        exit = false;
+                        break;
+                    case 8:
+
+                        exit=false;
                         break;
 
                 }
             } catch (NumberFormatException excepcion) {
                 System.out.println("Aplicación cerrada");
-                exit = false;
+                exit=false;
             }
 
-        } while (exit == true);
+        } while (exit==true);
     }
 }

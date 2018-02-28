@@ -41,6 +41,7 @@ public class Metodos {
         }
     }
 
+
     public void borrar() {
         Iterator<Libros> it = lLibros.iterator();
         while (it.hasNext()) {
